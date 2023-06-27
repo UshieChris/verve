@@ -39,6 +39,7 @@ function App() {
         paginationStyle={{bottom: 20}}
         activeDotColor="#03435F"
         autoplay={true}
+        dotColor = '#EEF3F5'
         dot={
           <View
             style={{
