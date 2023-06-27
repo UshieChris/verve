@@ -127,14 +127,15 @@ const styles = StyleSheet.create({
     alignItems:'center'
   },
   appButtonText: {
-    fontSize: 18,
+    fontSize: 23,
     alignSelf: 'center',
     color: '#fff',
-    fontWeight: 'bold',
     alignSelf: 'flex-start',
     lineHeight: 48,
     justifyContent: 'flex-start',
-    textTransform: 'uppercase',
+    textTransform: 'capitalize',
+    fontFamily:'Rubik-Light',
+    letterSpacing: -1
   },
 
   iconImage: {
