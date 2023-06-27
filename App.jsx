@@ -9,6 +9,7 @@ import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import {couroselData} from './components/molecule/data';
 import Swiper from 'react-native-swiper';
+import RightArrowSvg from './components/atom/svgs';
 const rightArrow = require('./assets/images/rightArrow.png');
 import {
   Platform,
@@ -65,7 +66,7 @@ function App() {
       </Swiper>
       <TouchableOpacity style={styles.appButtonContainer}>
         <Text style={styles.appButtonText}>Get Started</Text>
-        <Image source={rightArrow}  style={styles.iconImage}/>
+        <RightArrowSvg />
       </TouchableOpacity>
     </View>
   );
