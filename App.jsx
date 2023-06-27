@@ -30,7 +30,9 @@ const screenWidth = Dimensions.get('window').width;
 
 function App() {
   useEffect(() => {
-    if (Platform.OS === 'android') SplashScreen.hide();
+    setTimeout(()=> {
+      if (Platform.OS === 'android') SplashScreen.hide();
+    }, 2000)
   }, []);
 
   return (
@@ -88,7 +90,6 @@ const styles = StyleSheet.create({
     height: screenHeight * 0.6,
     resizeMode: 'cover',
     objectFit: 'cover',
-    backgroundSize: 'cover',
     alignItems: 'center',
     backgroundColor: '#9DD6EB',
   },
@@ -116,13 +117,12 @@ const styles = StyleSheet.create({
   appButtonContainer: {
     backgroundColor: '#1A73E8',
     borderRadius: 5,
-    paddingVertical:8,
-    width: 358,
-    marginBottom: 60,
+    width: 308,
+    marginBottom: 50,
     justifyContent: 'flex-start',
     alignSelf: 'center',
     paddingHorizontal: 30,
-    paddingVertical:8,
+    paddingVertical:4,
     display: 'flex',
     flexDirection:'row',
     justifyContent:'space-between',
