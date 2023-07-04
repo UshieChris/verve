@@ -19,6 +19,7 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
+  TextInput
 } from 'react-native';
 
 import {
@@ -29,11 +30,11 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 function App() {
-  useEffect(() => {
-    setTimeout(()=> {
-      if (Platform.OS === 'android') SplashScreen.hide();
-    }, 2000)
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(()=> {
+  //     if (Platform.OS === 'android') SplashScreen.hide();
+  //   }, 2000)
+  // }, []);
 
   return (
     <View style={styles.container}>
