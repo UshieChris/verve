@@ -75,6 +75,8 @@ android {
 
     namespace "com.vervelife"
     defaultConfig {
+        
+        compileSdk 33
         applicationId "com.vervelife"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
