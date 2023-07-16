@@ -1,4 +1,4 @@
-import CustomButton from '../../helpers/button';
+import CustomButton from '../../helpers/Button';
 import {EyeSvg} from '../../helpers/svgs';
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
@@ -10,7 +10,7 @@ import {TextInput} from 'react-native';
 
 import styles from '../../styles/signupStyle';
 import {useNavigation} from '@react-navigation/native';
-import Autobar from '../Actions/AutoBarScreen';
+import Autobar from '../ActionsScreen/AutoBarScreen';
 import {Input} from '../../helpers/Input';
 
 function Signup() {

@@ -4,6 +4,7 @@ import {couroselData} from './CarouselData';
 import Swiper from 'react-native-swiper';
 import {RightArrowSvg} from '../helpers/svgs';
 import styles from '../styles/couroselStyle';
+import AppStatusBar from '../helpers/AppStatusBar';
 
 import {
   Platform,

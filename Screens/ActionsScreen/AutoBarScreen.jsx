@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import CustomButton from '../../helpers/button';
+import CustomButton from '../../helpers/Button';
 import {EyeSvg} from '../../helpers/svgs';
 
 import {

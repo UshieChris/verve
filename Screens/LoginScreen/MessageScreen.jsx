@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import CustomButton from '../../helpers/button';
+import CustomButton from '../../helpers/Button';
 import {EyeSvg} from '../../helpers/svgs';
 
 import {
@@ -19,7 +19,7 @@ const originalHeight = 539.286;
 const aspectRatio = originalWidth / originalHeight;
 import styles from '../../styles/messageStyle';
 import {useNavigation} from '@react-navigation/native';
-import Autobar from '../Actions/AutoBarScreen';
+import Autobar from '../ActionsScreen/AutoBarScreen';
 
 function Message() {
   const [name, setName] = useState('');
