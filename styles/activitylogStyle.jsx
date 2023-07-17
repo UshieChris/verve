@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   flexStepCount:{paddingTop: 10, fontSize: 18, lineHeight: 22,  color: '#FFFFFF',fontFamily: 'AvertaStd-ExtaBold'} ,
   flexMenuFive: {
-   
+   backgroundColor:'#2D71B3',
   },
 });
 

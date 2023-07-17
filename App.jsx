@@ -9,7 +9,8 @@ import Createpin from './Screens/LoginScreen/CreatePinScreen';
 import SplashScreen from './Screens/ActionsScreen/SplashScreen';
 import Dashboard from './Screens/ProfileScreen/DashboardScreen';
 const Stack = createNativeStackNavigator();
-import TabNavigator from './navigator/TabNavigator';
+// import TabNavigator from './navigator/TabNavigator';
+import DrawerNavigator from './navigator/DrawerNavigator';
 const App = () => {
   return (
     <NavigationContainer>
@@ -28,7 +29,7 @@ const App = () => {
         <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
         <Stack.Screen name="Message" component={Message} options={{headerShown: false}}/>
         <Stack.Screen name="Createpin" component={Createpin} options={{headerShown: false}}/>
-        <Stack.Screen name="TabNavigator" component={TabNavigator} options={{headerShown:false}} />
+        <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} options={{headerShown:false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

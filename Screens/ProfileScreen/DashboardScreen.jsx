@@ -37,14 +37,6 @@ function Dashboard() {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-      <View style={[styles.logo, styles.flex]}>
-        <View style={styles.hamburger}>
-          <HamburgerSvg />
-        </View>
-        <View style={styles.verveLogo}>
-          <VerveLogoSvg />
-        </View>
-      </View>
       <View style={[styles.flex, styles.dateBox]}>
         <CalenderSvg />
         <Text

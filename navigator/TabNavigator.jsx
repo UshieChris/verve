@@ -1,28 +1,34 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import Home from '../Screens/NavigationScreen/HomeScreen';
-import Wallet from '../Screens/NavigationScreen/WalletScreen';
-import Settings from '../Screens/NavigationScreen/SettingsScreen';
-import LaunchActivity from '../Screens/NavigationScreen/LaunchActivityScreen';
-import VerveDeals from '../Screens/NavigationScreen/VerveDealsScreen';
+import Home from '../Screens/NavigationScreen/TabNavigation/HomeScreen';
+import Wallet from '../Screens/NavigationScreen/TabNavigation/WalletScreen';
+import Settings from '../Screens/NavigationScreen/TabNavigation/SettingsScreen';
+import LaunchActivity from '../Screens/NavigationScreen/TabNavigation/LaunchActivityScreen';
+import VerveDeals from '../Screens/NavigationScreen/TabNavigation/VerveDealsScreen';
 import Dashboard from '../Screens/ProfileScreen/DashboardScreen';
+import { TouchableOpacity } from 'react-native';
 import {
   HomeSvg,
   WalletSvg,
   VerveDealsSvg,
+  HamburgerSvg,
   SettingsSvg,
   LaunchActivitySvg,
 } from '../helpers/svgs';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {useNavigation} from '@react-navigation/native';
+import Header from '../helpers/Header';
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
+  const navigation = useNavigation();
 
   return (
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: '#4CA7BD',
+        headerShown: false,
         tabBarStyle: [
           {
             height: 60,
@@ -37,8 +43,20 @@ const TabNavigator = () => {
         name="Home"
         component={Dashboard}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: '#ffffff33',
+          },
+          headerTitle: ()=><Header />,
+          headerLeft: () => {
+            return (
+              <TouchableOpacity style = {{padding:20}} onPress={() => navigation.openDrawer()}>
+                <HamburgerSvg/>
+              </TouchableOpacity>
+            )
+          },
           tabBarIcon: () => <HomeSvg />,
+        
         }}
       />
       <Tab.Screen
@@ -61,8 +79,11 @@ const TabNavigator = () => {
         name="Verve Deals"
         component={VerveDeals}
         options={{
-          headerShown: false,
+          backTitle: null,
+          headerShown: true,
+          headerTitle: ()=><Header />,
           tabBarIcon: () => <VerveDealsSvg />,
+            headerLeft: () => (<HamburgerSvg/>)
         }}
       />
       <Tab.Screen
@@ -72,6 +93,7 @@ const TabNavigator = () => {
           headerShown: false,
           tabBarIcon: () => <SettingsSvg />,
         }}
+        
       />
     </Tab.Navigator>
   );

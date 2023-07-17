@@ -1,10 +1,14 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {COLORS, ROUTES} from '../constants';
-import {Wallet, Notifications} from '../screens';
-import BottomTabNavigator from './BottomTabNavigator';
-import Icon from 'react-native-vector-icons/Ionicons';
+import TabNavigator from './TabNavigator';
 import CustomDrawer from '../components/CustomDrawer';
+import Logout from '../Screens/NavigationScreen/DrawerNavigation/LogOutScreen';
+import Events from '../Screens/NavigationScreen/DrawerNavigation/EventsScreen';
+import Friends from '../Screens/NavigationScreen/DrawerNavigation/FriendsScreen';
+// import TabNavigator from './TabNavigator';
+import Groups from '../Screens/NavigationScreen/DrawerNavigation/GroupsScreen';
+
+import Settings from '../Screens/NavigationScreen/TabNavigation/SettingsScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -14,42 +18,70 @@ function DrawerNavigator() {
       drawerContent={props => <CustomDrawer {...props} />}
       screenOptions={{
         headerShown: false,
-        drawerActiveBackgroundColor: COLORS.primary,
-        drawerActiveTintColor: COLORS.white,
-        drawerLabelStyle: {
-          marginLeft: -20,
+        // drawerActiveBackgroundColor: '#7d5fff',
+        itemStyle: { padding: 0 },
+        // drawerActiveTintColor: 'fff',
+        // drawerActiveBackgroundColor: COLORS.primary,
+        // drawerActiveTintColor: COLORS.white,
+        // drawerLabelStyle: {
+        //   marginLeft: -20,
+        //   backgroundColor:'red'
+        // },
+        drawerStyle: {
+          // backgroundColor: '#c6cbef',
+          // width: 240,
+          marginTop: -100
+          
         },
       }}>
       <Drawer.Screen
-        name={ROUTES.HOME_DRAWER}
-        component={BottomTabNavigator}
+        name={'HomePage'}
+        component={TabNavigator}
         options={{
-          title: 'Home',
-          drawerIcon: ({focused, color, size}) => (
-            <Icon name="home-sharp" size={18} color={color} />
-          ),
+          title: 'Home Page' 
+        
         }}
       />
 
       <Drawer.Screen
-        name={ROUTES.WALLET_DRAWER}
-        component={Wallet}
+        name='Friends'
+        component={Friends}
         options={{
-          title: 'Wallet',
-          drawerIcon: ({focused, color, size}) => (
-            <Icon name="wallet" size={18} color={color} />
-          ),
+          title: 'Friends' 
         }}
       />
 
       <Drawer.Screen
-        name={ROUTES.NOTIFICATIONS_DRAWER}
-        component={Notifications}
+        name='Events'
+        component={Events}
         options={{
-          title: 'Notifications',
-          drawerIcon: ({focused, color, size}) => (
-            <Icon name="notifications" size={18} color={color} />
-          ),
+          title: 'Events' 
+       
+        }}
+      />
+
+      <Drawer.Screen
+        name='Groups'
+        component={Groups}
+        options={{
+          title: 'Groups' 
+        
+        }}
+      />
+
+         <Drawer.Screen
+        name='Settings'
+        component={Settings}
+        options={{
+          title: 'Settings',
+        }}
+      />
+         <Drawer.Screen
+        name='Logout'
+        component={Logout}
+        options={{
+          title: 'Log out',
+         
         }}
       />
     </Drawer.Navigator>

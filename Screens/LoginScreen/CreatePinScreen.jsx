@@ -4,8 +4,11 @@ import {Text, View, TextInput} from 'react-native';
 import styles from '../../styles/messageStyle';
 import {useNavigation} from '@react-navigation/native';
 import Autobar from '../ActionsScreen/AutoBarScreen';
+import Home from '../NavigationScreen/TabNavigation/HomeScreen';
+
 
 function Createpin({navigation}) {
+  // const navigation = useNavigation();
   return (
     <View style={{padding: 20}}>
       <Autobar />
@@ -34,7 +37,7 @@ function Createpin({navigation}) {
         <View>
           <CustomButton
             title="Save Pin"
-            onPress={() => navigation.navigate('TabNavigator')}
+            onPress={() => navigation.navigate('DrawerNavigator')}
           />
         </View>
       </View>

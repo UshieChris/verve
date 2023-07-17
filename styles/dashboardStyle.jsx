@@ -4,13 +4,9 @@ const screenWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   container: {padding: 20},
-  logo: {marginTop: 40},
-  hamburger: {flex: 2},
-  verveLogo: {flex: 3},
   flex: {flexDirection: 'row'},
   dateBox: {
     marginLeft: 'auto',
-    marginTop: 30,
     columnGap: 5,
     fontFamily: 'AvertaStd-ExtraBold',
   },
@@ -73,7 +69,7 @@ const styles = StyleSheet.create({
     lineHeight: 16,
   },
   verveOffer: {
-    textAlign:'left',
+    textAlign: 'left',
     justifyContent: 'center',
     alignItems: 'flex-start',
     marginBottom: 50,
@@ -83,7 +79,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 16,
     fontFamily: 'AvertaStd-Light',
-    marginBottom:7
+    marginBottom: 7,
   },
   verveImage: {
     justifyContent: 'center',
