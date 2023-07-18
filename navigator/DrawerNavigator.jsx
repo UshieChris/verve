@@ -24,17 +24,9 @@ function DrawerNavigator() {
         drawerInactiveTintColor:'#00425F',
         drawerActiveTintColor: '#00425F',
         drawerLabelStyle:{fontSize:18, lineHeight:18, fontFamily:'AvertaStd-Regular', fontWeight:400},
-        // drawerActiveBackgroundColor: COLORS.primary,
-        // drawerActiveTintColor: COLORS.white,
-        // drawerLabelStyle: {
-        //   marginLeft: -20,
-        //   backgroundColor:'red'
-        // },
+      
         drawerStyle: {
-          // backgroundColor: '#c6cbef',
-          // width: 240,
           marginTop: -100
-          
         },
       }}>
       <Drawer.Screen
