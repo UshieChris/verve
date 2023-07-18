@@ -18,9 +18,12 @@ function DrawerNavigator() {
       drawerContent={props => <CustomDrawer {...props} />}
       screenOptions={{
         headerShown: false,
-        // drawerActiveBackgroundColor: '#7d5fff',
-        itemStyle: { padding: 0 },
-        // drawerActiveTintColor: 'fff',
+        drawerActiveBackgroundColor: '#fff',
+        itemStyle: { padding: 0, color: '#00425F' },
+        drawerItemStyle:{color: '#00425F'},
+        drawerInactiveTintColor:'#00425F',
+        drawerActiveTintColor: '#00425F',
+        drawerLabelStyle:{fontSize:18, lineHeight:18, fontFamily:'AvertaStd-Regular', fontWeight:400},
         // drawerActiveBackgroundColor: COLORS.primary,
         // drawerActiveTintColor: COLORS.white,
         // drawerLabelStyle: {

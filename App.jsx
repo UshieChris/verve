@@ -8,6 +8,7 @@ import Message from './Screens/LoginScreen/MessageScreen';
 import Createpin from './Screens/LoginScreen/CreatePinScreen';
 import SplashScreen from './Screens/ActionsScreen/SplashScreen';
 import Dashboard from './Screens/ProfileScreen/DashboardScreen';
+import Settings from './Screens/NavigationScreen/TabNavigation/SettingsScreen';
 const Stack = createNativeStackNavigator();
 // import TabNavigator from './navigator/TabNavigator';
 import DrawerNavigator from './navigator/DrawerNavigator';

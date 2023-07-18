@@ -8,6 +8,7 @@ import LaunchActivity from '../Screens/NavigationScreen/TabNavigation/LaunchActi
 import VerveDeals from '../Screens/NavigationScreen/TabNavigation/VerveDealsScreen';
 import Dashboard from '../Screens/ProfileScreen/DashboardScreen';
 import { TouchableOpacity } from 'react-native';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import {
   HomeSvg,
   WalletSvg,
@@ -23,6 +24,12 @@ import Header from '../helpers/Header';
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
   const navigation = useNavigation();
+
+  const getTabBarVisibility = (route) => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    const hideOnScreens = ['Settings']; // put here name of screen where you want to hide tabBar
+    return hideOnScreens.indexOf(routeName) <= -1;
+  };
 
   return (
     <Tab.Navigator
@@ -62,38 +69,46 @@ const TabNavigator = () => {
       <Tab.Screen
         name="Wallet"
         component={Wallet}
-        options={{
+        options={() => ({
+          tabBarStyle: {
+            display: "none",
+          },
           headerShown: false,
           tabBarIcon: () => <WalletSvg />,
-        }}
+        })}
       />
       <Tab.Screen
         name="Launch Activity"
         component={LaunchActivity}
-        options={{
+        options={() => ({
+          tabBarStyle: {
+            display: "none",
+          },
           headerShown: false,
           tabBarIcon: () => <LaunchActivitySvg />,
-        }}
+        })}
       />
       <Tab.Screen
         name="Verve Deals"
         component={VerveDeals}
-        options={{
-          backTitle: null,
-          headerShown: true,
-          headerTitle: ()=><Header />,
+        options={() => ({
+          tabBarStyle: {
+            display: "none",
+          },
+          headerShown: false,
           tabBarIcon: () => <VerveDealsSvg />,
-            headerLeft: () => (<HamburgerSvg/>)
-        }}
+        })}
       />
       <Tab.Screen
         name="Settings"
         component={Settings}
-        options={{
+        options={() => ({
+          tabBarStyle: {
+            display: "none",
+          },
           headerShown: false,
           tabBarIcon: () => <SettingsSvg />,
-        }}
-        
+        })}    
       />
     </Tab.Navigator>
   );

@@ -47,7 +47,7 @@ const CustomDrawer = props => {
       </View>
 
       <View>
-        <DrawerItemList {...props} />
+        <DrawerItemList {...props} style={{backgroundColor: '#000000'}} labelStyle={{color: '#ffffff'}} drawerItemStyle={{color: '#00425F'}}/>
       </View>
     </DrawerContentScrollView>
   );
