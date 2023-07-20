@@ -1,9 +1,8 @@
 import CustomButton from '../../helpers/Button';
-import {EyeSvg} from '../../helpers/svgs';
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 // import FloatingLabelInput from 'react-native-floating-label-input';
-import { FloatingLabelInput } from 'react-native-floating-label-input';
+import {FloatingLabelInput} from 'react-native-floating-label-input';
 import FloatLabelTextInput from 'react-native-floating-label-text-input';
 
 import {TextInput} from 'react-native';
@@ -12,17 +11,23 @@ import styles from '../../styles/signupStyle';
 import {useNavigation} from '@react-navigation/native';
 import Autobar from '../ActionsScreen/AutoBarScreen';
 import {Input} from '../../helpers/Input';
+import {EyeSvg, EyeSlash} from '../../helpers/svgs';
 
 function Signup() {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [text, onChangeText] = React.useState('Useless Text');
-  const [number, onChangeNumber] = React.useState('');
   const navigation = useNavigation();
   const [cont, setCont] = useState('');
   const [show, setShow] = useState(false);
+  const [inputs, setInputs] = useState({
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    code: '',
+    phoneNumber: '',
+  });
+  const handleOnchange = (text, input) => {
+    setInputs(prevState => ({...prevState, [input]: text}));
+  };
 
   return (
     <View style={{padding: 20}}>
@@ -31,35 +36,53 @@ function Signup() {
       <View style={styles.singupmd}>
         <View style={styles.nameBox}>
           <View style={styles.firstName}>
-            <TextInput placeholder="First Name" />
+            <Input
+              label="First Name"
+              value={inputs.firstName}
+              setValue={text => handleOnchange(text, 'firstName')}
+            />
           </View>
           <View style={styles.lastName}>
-            <TextInput placeholder="Last Name" />
+            <Input
+              label="Last Name"
+              value={inputs.lastName}
+              setValue={text => handleOnchange(text, 'lastName')}
+            />
           </View>
         </View>
-        <TextInput style={styles.mailContainer} placeholder="Email Address" />
+        <View style={styles.mailContainer}>
+          <Input
+            label="Email Address"
+            value={inputs.email}
+            setValue={text => handleOnchange(text, 'email')}
+          />
+        </View>
         <View style={styles.contact}>
           <View style={styles.contactCd}>
-            <TextInput placeholder="+234" />
+            <Input
+              label="+234"
+              value={inputs.code}
+              setValue={text => handleOnchange(text, 'code')}
+            />
           </View>
           <View style={styles.contactNo}>
-            <TextInput placeholder="Mobile Number" />
-            {/* <FloatLabelTextInput
-               placeholder={"name of field"}
-               value={"value of field"}
-            /> */}
-             <FloatingLabelInput
-                label={'label'}
-                isPassword
-                togglePassword={show}
-                value={cont}
-                onChangeText={value => setCont(value)}
-                customShowPasswordComponent={<Text>Show</Text>}
-                customHidePasswordComponent={<Text>Hide</Text>}
-              />
+            <Input
+              label="Mobile Number"
+              value={inputs.phoneNumber}
+              setValue={text => handleOnchange(text, 'phoneNumber')}
+            />
           </View>
         </View>
-        <View style={[styles.passwordContainer, styles.container]}></View>
+        <View style={styles.passwordContainer}>
+          <Input
+            customShowPasswordComponent={<EyeSvg />}
+            customHidePasswordComponent={<EyeSlash />}
+            label="Set Password"
+            isPassword
+            value={inputs.password}
+            setValue={text => handleOnchange(text, 'password')}
+          />
+        </View>
         <View>
           <CustomButton
             title="CREATE ACCOUNT"

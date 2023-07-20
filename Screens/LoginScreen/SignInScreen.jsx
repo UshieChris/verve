@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import CustomButton from '../../helpers/Button';
-import {EyeSvg} from '../../helpers/svgs';
+import {EyeSvg, EyeSlash} from '../../helpers/svgs';
 
 import {
   Platform,
@@ -19,38 +19,52 @@ const originalHeight = 539.286;
 const aspectRatio = originalWidth / originalHeight;
 import styles from '../../styles/signinStyle';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
 import Autobar from '../ActionsScreen/AutoBarScreen';
 import {Input} from '../../helpers/Input';
+import {FloatingLabelInput} from 'react-native-floating-label-input';
+import loginUser from '../../redux-flow/actions/login_action';
 
 function Signin() {
-  const [inputs, setInputs] = useState({email: '', password: ''});
+  const [inputs, setInputs] = useState({emailOrPhoneNumber: '', password: ''});
+  const [cont, setCont] = useState('');
+  const [show, setShow] = useState(false);
   const navigation = useNavigation();
   const handleOnchange = (text, input) => {
     setInputs(prevState => ({...prevState, [input]: text}));
   };
+  const dispatch = useDispatch();
+  const onSubmit = () => {
+    // dispatch(loginUser(inputs));
+    console.log(inputs)
+  }
 
   return (
     <View style={{padding: 20}}>
       <Autobar />
       <Text style={styles.login}>Login</Text>
-      <View style={''}>
-        <Input
-          onTextChange={text => handleOnchange(text, 'email')}
-          label="Email"
-          placeholderText="Email or Mobile"
-        />
-        <View style={[styles.passwordContainer, styles.container]}>
+      <View style={{marginBottom: 30}}>
+        <View>
           <Input
-            onTextChange={text => handleOnchange(text, 'email')}
-            label="Password"
-            placeholderText="Password"
+            label="Email"
+            value={inputs.emailOrPhoneNumber}
+            setValue={text => handleOnchange(text, 'emailOrPhoneNumber')}
           />
-          <EyeSvg style={styles.eyecheck} />
         </View>
-
+        <View style={styles.passwordContainer}>
+          <Input
+            customShowPasswordComponent={<EyeSvg />}
+            customHidePasswordComponent={<EyeSlash />}
+            label="Password"
+            isPassword
+            value={inputs.password}
+            setValue={text => handleOnchange(text, 'password')}
+          />
+        </View>
         <View style={[styles.container, styles.mb]}>
           <View style={styles.container}>
             <Text style={styles.modulelighttext}>Forget Password?</Text>
+
             <Text style={styles.moduleboldtext}>Recover</Text>
           </View>
           <View style={styles.container}>
@@ -59,7 +73,7 @@ function Signin() {
           </View>
         </View>
         <View style={styles.autcontainer}>
-          <CustomButton title="Log in" />
+          <CustomButton title="Log in" onPress={onSubmit}/>
           <Text style={styles.ortext}>or</Text>
           <CustomButton
             title="Register"

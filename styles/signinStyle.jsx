@@ -45,14 +45,14 @@ const styles = StyleSheet.create({
     lineHeight:24.71,
   },
   passwordContainer : {
-    backgroundColor: '#E8E8E8',
-    marginTop: 10,
-    textAlign:'center',
-    paddingRight:15,
+    backgroundColor: '#E8E8E890',
+    fontSize: 16,
     paddingTop: 5,
     paddingBottom: 5,
-    lineHeight:100,
-    position:'relative'
+    textAlign: 'left',
+    paddingLeft: 15,
+    marginTop: 10,
+    marginBottom: 15
   },
   password: {
     lineHeight:100,
@@ -64,13 +64,14 @@ const styles = StyleSheet.create({
     right:0,
     top:0,
   },
-  mailcontainer: {
-    borderBottomColor: '#1A73E8',
-    borderBottomWidth: 3,
+  mailContainer: {
+    backgroundColor: '#E8E8E8',
     fontSize: 16,
+    paddingTop: 5,
+    paddingBottom: 5,
+    textAlign: 'left',
     paddingLeft: 15,
-    marginBottom:20,
-    marginTop: 20
+    marginTop: 10,
   }
 
 });

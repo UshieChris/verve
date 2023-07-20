@@ -9,30 +9,55 @@ import Createpin from './Screens/LoginScreen/CreatePinScreen';
 import SplashScreen from './Screens/ActionsScreen/SplashScreen';
 import Dashboard from './Screens/ProfileScreen/DashboardScreen';
 import Settings from './Screens/NavigationScreen/TabNavigation/SettingsScreen';
+import {store} from './create-store';
+import {Provider} from 'react-redux';
+
 const Stack = createNativeStackNavigator();
 // import TabNavigator from './navigator/TabNavigator';
 import DrawerNavigator from './navigator/DrawerNavigator';
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="SplashScreen"
-          component={SplashScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Carousel"
-          component={Carousel}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen name="Signin" component={Signin} options={{headerShown: false}}/>
-        <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
-        <Stack.Screen name="Message" component={Message} options={{headerShown: false}}/>
-        <Stack.Screen name="Createpin" component={Createpin} options={{headerShown: false}}/>
-        <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} options={{headerShown:false}} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="SplashScreen"
+            component={SplashScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Carousel"
+            component={Carousel}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Signin"
+            component={Signin}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Signup"
+            component={Signup}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Message"
+            component={Message}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Createpin"
+            component={Createpin}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="DrawerNavigator"
+            component={DrawerNavigator}
+            options={{headerShown: false}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 
