@@ -12,6 +12,7 @@ const login_reducer = (state = initialState, action) => {
 
     switch (type) {
         case LOGIN_SUCCESS:
+            console.log('Login Worksssssssssssssssssss.........')
             return {
                 ...state,
                 login: SUCCESS,
@@ -21,12 +22,8 @@ const login_reducer = (state = initialState, action) => {
                 ...state,
                 login: FAILURE
             };
-        case RESET:
-            return {
-                ...state, role, decodedData,
-                login: null
-            };
         default:
+            console.log('Login Worksssssssssssssssssss.........wwww')
             return state;
     }
 };

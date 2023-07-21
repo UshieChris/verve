@@ -1,15 +1,21 @@
-export const userLogin = async (user) => {
-    const response = await fetch(endpoint.login,{
-        method: 'POST',
-        headers: { 
-            'Content-Type' : 'application/json' 
-        },
-        body: JSON.stringify({
-            email: user.email,
-            password: user.password,
-        })
-    })
-    if(!response.ok) throw new Error('Something Went Wrong!!');
-    const responseData = await response.json()
-    return responseData
-}
+const path = `https://vervelife-service.k8.isw.la/vervelife/api/v1/login`;
+
+import axios from "axios";
+
+export const userLogin = (user) => {
+    const {payload} =user
+console.log('User check...................', user);
+  return new Promise((resolve, reject) => {
+    axios
+      .post(path, payload)
+      .then(res => {
+        // console.log('User data...................', res);
+        return resolve({...res, error: false});
+      })
+      .catch(error => {
+        console.log('check again')
+      });
+  });
+};
+
+

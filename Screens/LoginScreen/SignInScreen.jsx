@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CustomButton from '../../helpers/Button';
 import {EyeSvg, EyeSlash} from '../../helpers/svgs';
 
@@ -19,7 +19,7 @@ const originalHeight = 539.286;
 const aspectRatio = originalWidth / originalHeight;
 import styles from '../../styles/signinStyle';
 import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Autobar from '../ActionsScreen/AutoBarScreen';
 import {Input} from '../../helpers/Input';
 import {FloatingLabelInput} from 'react-native-floating-label-input';
@@ -27,17 +27,31 @@ import loginUser from '../../redux-flow/actions/login_action';
 
 function Signin() {
   const [inputs, setInputs] = useState({emailOrPhoneNumber: '', password: ''});
-  const [cont, setCont] = useState('');
+  const [loginStatus, setLoginStatus] = useState(false);
   const [show, setShow] = useState(false);
   const navigation = useNavigation();
+
   const handleOnchange = (text, input) => {
     setInputs(prevState => ({...prevState, [input]: text}));
   };
   const dispatch = useDispatch();
+  const loginState = useSelector(state => state.login_reducer);
+
   const onSubmit = () => {
-    // dispatch(loginUser(inputs));
-    console.log(inputs)
-  }
+    dispatch(loginUser(inputs));
+    console.log(inputs);
+    console.log(loginState);
+  };
+
+  useEffect(() => {
+    if (loginState.login) {
+      setLoginStatus(true);
+      console.log(loginState);
+      navigation.navigate('Signup');
+    } else {
+      setLoginStatus(false);
+    }
+  }, [loginState.login]);
 
   return (
     <View style={{padding: 20}}>
@@ -72,8 +86,9 @@ function Signin() {
             <Text style={styles.moduleboldtext}> FaceID</Text>
           </View>
         </View>
+        {loginStatus && <Text>Nonsense</Text>}
         <View style={styles.autcontainer}>
-          <CustomButton title="Log in" onPress={onSubmit}/>
+          <CustomButton title="Log in" onPress={onSubmit} />
           <Text style={styles.ortext}>or</Text>
           <CustomButton
             title="Register"

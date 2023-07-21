@@ -3,24 +3,26 @@ import {call, put, takeLatest} from 'redux-saga/effects';
 import {encryptAndStore} from '../../redux-flow/services/localStorageHelper';
 
 import {LOGIN_SUCCESS, LOGIN_FAILURE, LOGIN_USER} from '../arsVariables';
+import {userLogin} from '../api/userLogin';
 
 function* loginUser(request) {
   try {
+    console.log('Hectic check', request);
     const returnedData = yield userLogin(request);
     const {
-      error,
-      status,
-      data: {
-        payload: {token, refreshToken, role, expires_in, ...rest},
-      },
+      errors,
+      responseCode,
     } = returnedData;
+    if (errors == null && responseCode == '00') {
+      console.log('Another Important check', returnedData);
+    }
     yield put({
       type: LOGIN_SUCCESS,
-      returnedData
+      returnedData,
     });
   } catch ({response}) {
     if (response) {
-     yield put({type: LOGIN_FAILURE, response});
+      yield put({type: LOGIN_FAILURE, response});
     }
   }
 }
