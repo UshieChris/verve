@@ -24,12 +24,25 @@ import Autobar from '../ActionsScreen/AutoBarScreen';
 import {Input} from '../../helpers/Input';
 import {FloatingLabelInput} from 'react-native-floating-label-input';
 import loginUser from '../../redux-flow/actions/login_action';
+import {Actions} from '../../redux-flow/actions';
+import {SUCCESS, FAILURE} from '../../redux-flow/arsVariables';
 
 function Signin() {
   const [inputs, setInputs] = useState({emailOrPhoneNumber: '', password: ''});
   const [loginStatus, setLoginStatus] = useState(false);
   const [show, setShow] = useState(false);
   const navigation = useNavigation();
+
+  const validate = obj => {
+    // method to test for empty inputs and return true is any is empty
+    const keysArr = Object.keys(obj || this.state.data);
+    const valuesArr = Object.values(obj || this.state.data);
+    const arrWithNoTruth = [];
+    keysArr.forEach((key, i) => {
+        arrWithNoTruth.push(_emptyTest(valuesArr[i].value, this, key));
+    });
+    return arrWithNoTruth.some(i => i === true);
+};
 
   const handleOnchange = (text, input) => {
     setInputs(prevState => ({...prevState, [input]: text}));
@@ -38,18 +51,15 @@ function Signin() {
   const loginState = useSelector(state => state.login_reducer);
 
   const onSubmit = () => {
-    dispatch(loginUser(inputs));
-    console.log(inputs);
-    console.log(loginState);
+    dispatch(Actions.loginUser(inputs));
   };
 
   useEffect(() => {
-    if (loginState.login) {
+    if (loginState.login == SUCCESS) {
       setLoginStatus(true);
-      console.log(loginState);
-      navigation.navigate('Signup');
+      navigation.navigate('DrawerNavigator');
     } else {
-      setLoginStatus(false);
+      dispatch(Actions.reset());
     }
   }, [loginState.login]);
 
@@ -86,7 +96,6 @@ function Signin() {
             <Text style={styles.moduleboldtext}> FaceID</Text>
           </View>
         </View>
-        {loginStatus && <Text>Nonsense</Text>}
         <View style={styles.autcontainer}>
           <CustomButton title="Log in" onPress={onSubmit} />
           <Text style={styles.ortext}>or</Text>

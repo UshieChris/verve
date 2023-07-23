@@ -4,16 +4,14 @@ import axios from "axios";
 
 export const userLogin = (user) => {
     const {payload} =user
-console.log('User check...................', user);
   return new Promise((resolve, reject) => {
     axios
       .post(path, payload)
       .then(res => {
-        // console.log('User data...................', res);
-        return resolve({...res, error: false});
+        return resolve({...res, errors: false});
       })
       .catch(error => {
-        console.log('check again')
+        return reject({ errors: true, error: error.response.data});
       });
   });
 };
