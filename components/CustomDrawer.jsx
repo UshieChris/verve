@@ -1,4 +1,5 @@
 import React from 'react';
+import DrawerItem from '@react-navigation/drawer';
 import {
   ImageBackground,
   StyleSheet,
@@ -16,6 +17,7 @@ import {COLORS, IMGS} from '../constants';
 const {width} = Dimensions.get('screen');
 import {PictureSvg, VerveLogoSvg, VerveDrwSvg} from '../helpers/svgs';
 
+
 const CustomDrawer = props => {
   return (
     <DrawerContentScrollView {...props}>
@@ -23,9 +25,9 @@ const CustomDrawer = props => {
         style={{
           backgroundColor: '#00425F',
           margin: 0,
-          paddingLeft: 20,
-          paddingRight: 70,
-          paddingBottom: 30,
+          paddingLeft: 15,
+          paddingRight: 25,
+          paddingBottom: 40,
           paddingTop: 100,
         }}>
         <VerveDrwSvg />
@@ -35,6 +37,7 @@ const CustomDrawer = props => {
             justifyContent: 'space-between',
             flexDirection: 'row',
             marginTop: 20,
+            paddingLeft: 10,
             columnGap: 10,
           }}>
           <View>
@@ -55,7 +58,7 @@ const CustomDrawer = props => {
                 fontSize: 16,
                 color: '#FFFFFF85',
               }}>
-              olaniyiakinwunmi@gmail...
+              olaniyiakinwunmi@gmail..
             </Text>
           </View>
           <View>
@@ -63,17 +66,13 @@ const CustomDrawer = props => {
           </View>
         </View>
       </View>
-      <View style={{backgroundColor: '#3077BD',paddingBottom:20, paddingTop: 20, paddingLeft: 20}}>
-        <Text style={{fontSize: 12, lineHeight:16, color: '#FFFFFF', fontFamily: 'AvertaStd-Light', fontWeight: 400}}>eCash Balance</Text>
-        <Text style={{fontSize: 20, lineHeight:16, paddingTop:20, color: '#FFFFFF85', fontFamily: 'AvertaStd-Bold', fontWeight: 700}}>N4, 657.04</Text>
-      </View>
-
       <View>
         <DrawerItemList
+        style={{backgroundColor: '#000000', marginBottom: 0}}
+        labelStyle={{color: '#ffffff', marginBottom: 0}}
+        drawerItemStyle={{color: '#00425F', marginBottom: 0}}
+        androidPressColor="rgba(255, 255, 255, 0.5)" 
           {...props}
-          style={{backgroundColor: '#000000'}}
-          labelStyle={{color: '#ffffff'}}
-          drawerItemStyle={{color: '#00425F'}}
         />
       </View>
     </DrawerContentScrollView>

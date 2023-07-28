@@ -70,9 +70,6 @@ const TabNavigator = () => {
         name="Wallet"
         component={Wallet}
         options={() => ({
-          tabBarStyle: {
-            display: "none",
-          },
           headerShown: false,
           tabBarIcon: () => <WalletSvg />,
         })}
