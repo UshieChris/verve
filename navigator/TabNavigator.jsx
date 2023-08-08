@@ -7,8 +7,8 @@ import Settings from '../Screens/NavigationScreen/TabNavigation/SettingsScreen';
 import LaunchActivity from '../Screens/NavigationScreen/TabNavigation/LaunchActivityScreen';
 import VerveDeals from '../Screens/NavigationScreen/TabNavigation/VerveDealsScreen';
 import Dashboard from '../Screens/ProfileScreen/DashboardScreen';
-import { TouchableOpacity } from 'react-native';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import {TouchableOpacity} from 'react-native';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import {
   HomeSvg,
   WalletSvg,
@@ -25,7 +25,7 @@ const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
   const navigation = useNavigation();
 
-  const getTabBarVisibility = (route) => {
+  const getTabBarVisibility = route => {
     const routeName = getFocusedRouteNameFromRoute(route);
     const hideOnScreens = ['Settings']; // put here name of screen where you want to hide tabBar
     return hideOnScreens.indexOf(routeName) <= -1;
@@ -54,16 +54,17 @@ const TabNavigator = () => {
           headerStyle: {
             backgroundColor: '#ffffff33',
           },
-          headerTitle: ()=><Header />,
+          headerTitle: () => <Header />,
           headerLeft: () => {
             return (
-              <TouchableOpacity style = {{padding:20}} onPress={() => navigation.openDrawer()}>
-                <HamburgerSvg/>
+              <TouchableOpacity
+                style={{padding: 20}}
+                onPress={() => navigation.openDrawer()}>
+                <HamburgerSvg />
               </TouchableOpacity>
-            )
+            );
           },
           tabBarIcon: () => <HomeSvg />,
-        
         }}
       />
       <Tab.Screen
@@ -79,7 +80,7 @@ const TabNavigator = () => {
         component={LaunchActivity}
         options={() => ({
           tabBarStyle: {
-            display: "none",
+            display: 'none',
           },
           headerShown: false,
           tabBarIcon: () => <LaunchActivitySvg />,
@@ -90,7 +91,7 @@ const TabNavigator = () => {
         component={VerveDeals}
         options={() => ({
           tabBarStyle: {
-            display: "none",
+            display: 'none',
           },
           headerShown: false,
           tabBarIcon: () => <VerveDealsSvg />,
@@ -100,12 +101,9 @@ const TabNavigator = () => {
         name="Settings"
         component={Settings}
         options={() => ({
-          tabBarStyle: {
-            display: "none",
-          },
           headerShown: false,
           tabBarIcon: () => <SettingsSvg />,
-        })}    
+        })}
       />
     </Tab.Navigator>
   );
